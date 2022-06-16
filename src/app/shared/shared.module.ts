@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     AppRoutingModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     
   ],
   exports: [

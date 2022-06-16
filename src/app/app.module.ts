@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartsModule } from './carts/carts.module';
 import { ProductsModule } from './products/products.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     SharedModule,
     ProductsModule,
