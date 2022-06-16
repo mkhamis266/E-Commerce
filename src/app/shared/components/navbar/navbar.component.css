@@ -1,0 +1,23 @@
+nav {
+  background: linear-gradient(to right, #574ECD, #327CCB);
+  color: #fff;
+}
+nav .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+nav .content ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  margin: 0;
+}
+nav .content ul li a{
+  cursor: pointer;
+  font-size: 22px;
+  color: #fff;
+  text-decoration: none;
+}
