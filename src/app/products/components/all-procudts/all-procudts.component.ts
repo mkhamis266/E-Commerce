@@ -11,11 +11,13 @@ import { ToastrService } from 'ngx-toastr';
 export class AllProcudtsComponent implements OnInit {
 
   products!:Product[];
+  categories!:string[];
   loading:boolean = true;
   constructor(private productsService:ProductsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.geAllProducts();
+    this.getAllCategories();
   }
 
   geAllProducts(){
@@ -32,5 +34,32 @@ export class AllProcudtsComponent implements OnInit {
         }
       }
     )
+  }
+  getAllCategories(){ 
+    this.productsService.getAllCategories().subscribe((res:string[])=>{
+      this.categories = [];
+      this.categories = res;
+      this.categories.push('All');
+      this.categories.sort();
+    })
+  }
+  filterProducts(event:Event){
+    const category:string = (event.target as HTMLInputElement).value;
+
+    if(category == 'All'){
+      this.geAllProducts();
+    }
+    else{
+      this.loading = true;
+      this.products = [];
+      this.productsService.getProductsByCategory(category).subscribe(
+        
+        {
+          next: (res:Product[])=>{
+            this.products = res;
+            this.loading = false;
+          }
+        })
+      }
   }
 }

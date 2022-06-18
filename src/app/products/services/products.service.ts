@@ -13,4 +13,10 @@ export class ProductsService {
   getAllProducts(){
     return this.http.get<Product[]>(environment.apiUrl+'products');
   }
+  getAllCategories(){
+    return this.http.get<string[]>(environment.apiUrl+'products/categories');
+  }
+  getProductsByCategory(category:string){
+    return this.http.get<Product[]>(environment.apiUrl+'products/category/'+category);
+  }
 }

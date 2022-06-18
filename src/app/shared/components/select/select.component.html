@@ -1,0 +1,4 @@
+<label class="my-1">{{title}}</label>
+<select class="form-control" (change)="getChange($event)">
+  <option *ngFor="let option of data" value="{{option}}">{{option}}</option>
+</select>
