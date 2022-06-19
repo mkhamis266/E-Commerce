@@ -13,6 +13,7 @@ export class AllProcudtsComponent implements OnInit {
   products!:Product[];
   categories!:string[];
   loading:boolean = true;
+  cartsProducts:Product[] = [];
   constructor(private productsService:ProductsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -61,5 +62,20 @@ export class AllProcudtsComponent implements OnInit {
           }
         })
       }
+  }
+  addToCart(product:Product){
+    if ("cart" in localStorage){
+      this.cartsProducts = JSON.parse(localStorage.getItem('cart')!);
+      let exixts = this.cartsProducts.find(p => p.id == product.id);
+      if(exixts){
+        this.toastr.warning('Product already in cart', 'Warning');
+      }else{
+        this.cartsProducts.push(product);
+        localStorage.setItem('cart', JSON.stringify(this.cartsProducts));
+      }
+    }else {
+      this.cartsProducts.push(product);
+      localStorage.setItem('cart', JSON.stringify(this.cartsProducts));
+    }
   }
 }

@@ -1,0 +1,13 @@
+<div class="item">
+  <img src="{{product.image}}" alt="">
+  <div class="body">
+    <h4>{{product.title}}</h4>
+    <p>{{product.description}}</p>
+  </div>
+  <div class="px-3 mb-2 d-flex justify-content-around">
+    <button class="btn btn-success" (click)="add()">
+      add to cart
+    </button>
+    <span>{{product.price}} L.E</span>
+  </div>
+</div>
