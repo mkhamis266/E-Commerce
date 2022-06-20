@@ -10,6 +10,10 @@ export class ProductsService {
 
   constructor(private http:HttpClient) { }
 
+  getProduct(id:number){
+    return this.http.get<Product>(environment.apiUrl+'products/'+id);
+  }
+
   getAllProducts(){
     return this.http.get<Product[]>(environment.apiUrl+'products');
   }

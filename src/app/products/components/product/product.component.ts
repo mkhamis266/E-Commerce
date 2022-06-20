@@ -1,6 +1,7 @@
 import { CartItem } from './../../models/cart-item';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ export class ProductComponent implements OnInit {
 
   quantityTag=false;
   quantity:number = 1;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -28,4 +29,7 @@ export class ProductComponent implements OnInit {
     this.quantityTag = false;
   }
 
+  openDetails(id:number){
+    this.router.navigate(['/details', id]);
+  }
 }
