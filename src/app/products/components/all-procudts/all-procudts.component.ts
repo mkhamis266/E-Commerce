@@ -73,10 +73,12 @@ export class AllProcudtsComponent implements OnInit {
       }else{
         this.cartsProducts.push(cartItem);
         localStorage.setItem('cart', JSON.stringify(this.cartsProducts));
+        this.toastr.success('Product added to cart', 'Success');
       }
     }else {
       this.cartsProducts.push(cartItem);
       localStorage.setItem('cart', JSON.stringify(this.cartsProducts));
+      this.toastr.success('Product added to cart', 'Success');
     }
   }
 }
