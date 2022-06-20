@@ -7,6 +7,6 @@
 </div>
 <div *ngIf="!loading" class="row">
   <div class="col-md-3 col-sm-12" *ngFor="let product of products">
-    <app-product [product]="product" (addedToCart)="addToCart(product)"></app-product>
+    <app-product [product]="product" (addedToCart)="addToCart($event)"></app-product>
   </div>
 </div>

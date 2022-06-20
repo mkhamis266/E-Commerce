@@ -2,6 +2,7 @@ import { ProductsService } from './../../services/products.service';
 import { Product } from './../../models/product';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CartItem } from '../../models/cart-item';
 
 @Component({
   selector: 'app-all-procudts',
@@ -63,18 +64,18 @@ export class AllProcudtsComponent implements OnInit {
         })
       }
   }
-  addToCart(product:Product){
+  addToCart(cartItem:CartItem){
     if ("cart" in localStorage){
       this.cartsProducts = JSON.parse(localStorage.getItem('cart')!);
-      let exixts = this.cartsProducts.find(p => p.id == product.id);
+      let exixts = this.cartsProducts.find(p => p.id == cartItem.id);
       if(exixts){
         this.toastr.warning('Product already in cart', 'Warning');
       }else{
-        this.cartsProducts.push(product);
+        this.cartsProducts.push(cartItem);
         localStorage.setItem('cart', JSON.stringify(this.cartsProducts));
       }
     }else {
-      this.cartsProducts.push(product);
+      this.cartsProducts.push(cartItem);
       localStorage.setItem('cart', JSON.stringify(this.cartsProducts));
     }
   }

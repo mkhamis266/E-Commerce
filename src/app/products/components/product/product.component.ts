@@ -1,3 +1,4 @@
+import { CartItem } from './../../models/cart-item';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product';
 
@@ -8,14 +9,23 @@ import { Product } from '../../models/product';
 })
 export class ProductComponent implements OnInit {
   @Input() product!:Product;
-  @Output() addedToCart = new EventEmitter<Product>();
+  @Output() addedToCart = new EventEmitter<CartItem>();
+
+  quantityTag=false;
+  quantity:number = 1;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showQuantity(){
+    this.quantityTag = !this.quantityTag;
+  }
+
   add(){
-    this.addedToCart.emit(this.product);
+    const cartItem = new CartItem(this.product, this.quantity);
+    this.addedToCart.emit(cartItem);
+    this.quantityTag = false;
   }
 
 }
